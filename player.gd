@@ -65,3 +65,4 @@ func wall_collision(delta) -> void:
 		else:
 			velocity.x = 100
 		decelerate()
+		
