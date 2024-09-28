@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 15.0
-const JUMP_VELOCITY = -300.0
+const SPEED = 10.0
+const JUMP_VELOCITY = -275.0
 const MAX_SPEED = 500
 const GRAVITY = Vector2(0, 800.0)
 
