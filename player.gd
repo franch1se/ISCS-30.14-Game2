@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 15.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -300.0
 const MAX_SPEED = 500
 const GRAVITY = Vector2(0, 800.0)
 
@@ -36,11 +36,8 @@ func _physics_process(delta: float) -> void:
 		accelerate(direction)
 	else:
 		decelerate()
-		
-	if wall_collision(delta) and is_on_floor_only():
-		velocity.x *= -0.5
-		decelerate()
 
+	wall_collision(delta)
 	move_and_slide()
 	
 func jump(y_velocity, mult):
@@ -60,9 +57,11 @@ func decelerate():
 	elif velocity.x < 0:
 		velocity.x = min(velocity.x + SPEED*0.5, 0)
 
-func wall_collision(delta) -> bool:
+func wall_collision(delta) -> void:
 	var collision = move_and_collide(velocity*delta)
-	if collision:
-		return true
-	else: 
-		return false
+	if collision and !is_jumping:
+		if velocity.x > 0:
+			velocity.x = -100
+		else:
+			velocity.x = 100
+		decelerate()
