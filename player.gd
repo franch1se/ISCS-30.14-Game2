@@ -36,6 +36,10 @@ func _physics_process(delta: float) -> void:
 		accelerate(direction)
 	else:
 		decelerate()
+		
+	if wall_collision(delta) and is_on_floor_only():
+		velocity.x *= -0.5
+		decelerate()
 
 	move_and_slide()
 	
@@ -56,10 +60,9 @@ func decelerate():
 	elif velocity.x < 0:
 		velocity.x = min(velocity.x + SPEED*0.5, 0)
 
-func check_dir():
-	if velocity.x > 0:
-		return 1
-	elif velocity.x < 0:
-		return -1
-	else:
-		return 0
+func wall_collision(delta) -> bool:
+	var collision = move_and_collide(velocity*delta)
+	if collision:
+		return true
+	else: 
+		return false
