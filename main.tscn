@@ -9,12 +9,11 @@ size = Vector2(36, 52)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("1_cg0v6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
+light_mask = 2
 z_index = 1
 position = Vector2(4, 154)
 texture = ExtResource("2_dg7pm")
@@ -23,5 +22,7 @@ texture = ExtResource("2_dg7pm")
 z_index = 1
 position = Vector2(8, 155)
 shape = SubResource("RectangleShape2D_2a0t8")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="MarcusMap" parent="." instance=ExtResource("3_crx8y")]
