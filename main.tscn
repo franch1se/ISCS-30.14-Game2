@@ -6,5 +6,6 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="PlayerSprite" parent="." instance=ExtResource("1_vhacx")]
+position = Vector2(0, 130.15)
 
 [node name="MarcusMap" parent="." instance=ExtResource("3_crx8y")]

@@ -1,15 +1,33 @@
-[gd_scene load_steps=50 format=3 uid="uid://dpeyx730l0f5c"]
+[gd_scene load_steps=71 format=3 uid="uid://dpeyx730l0f5c"]
 
+[ext_resource type="Texture2D" uid="uid://bo6x235ji6cef" path="res://Assets/Sprites/7-Objects/14-Jump Particles/1.png" id="1_6sxcg"]
 [ext_resource type="Script" path="res://player.gd" id="1_ygret"]
 [ext_resource type="Texture2D" uid="uid://dye37jyucl5sb" path="res://Assets/Sprites/1-Player-Bomb Guy/1-Idle/idleanimcombined.png" id="2_43ild"]
+[ext_resource type="Texture2D" uid="uid://5tr060sae68q" path="res://Assets/Sprites/7-Objects/14-Jump Particles/2.png" id="2_haent"]
 [ext_resource type="Texture2D" uid="uid://b3twiaxt0fqeg" path="res://Assets/Sprites/1-Player-Bomb Guy/5-Fall/1.png" id="2_kvwci"]
 [ext_resource type="Texture2D" uid="uid://dc5cgahlclu5s" path="res://Assets/Sprites/1-Player-Bomb Guy/5-Fall/2.png" id="3_dlki5"]
+[ext_resource type="Texture2D" uid="uid://vt82yx8d8y5h" path="res://Assets/Sprites/7-Objects/14-Jump Particles/3.png" id="3_mbhi6"]
+[ext_resource type="Texture2D" uid="uid://biroxuq48wg56" path="res://Assets/Sprites/7-Objects/14-Jump Particles/4.png" id="4_upf0u"]
+[ext_resource type="Texture2D" uid="uid://kfw08hx3tnyn" path="res://Assets/Sprites/7-Objects/14-Jump Particles/5.png" id="5_0ejfv"]
 [ext_resource type="Texture2D" uid="uid://t5w6f385fdu6" path="res://Assets/Sprites/1-Player-Bomb Guy/4-Jump/1.png" id="5_y3lo7"]
 [ext_resource type="Texture2D" uid="uid://beuwe0vbwo0mx" path="res://Assets/Sprites/1-Player-Bomb Guy/4-Jump/2.png" id="6_7orei"]
+[ext_resource type="Texture2D" uid="uid://cf586h6jfw8jt" path="res://Assets/Sprites/7-Objects/14-Jump Particles/6.png" id="6_ihpav"]
 [ext_resource type="Texture2D" uid="uid://qi68m2j5liso" path="res://Assets/Sprites/1-Player-Bomb Guy/4-Jump/3.png" id="7_ncl17"]
 [ext_resource type="Texture2D" uid="uid://dxr4n6wxrht5c" path="res://Assets/Sprites/1-Player-Bomb Guy/4-Jump/4.png" id="8_1nq1c"]
 [ext_resource type="Texture2D" uid="uid://bvbhk272t0osb" path="res://Assets/Sprites/1-Player-Bomb Guy/3-Jump Anticipation/1.png" id="9_tqt35"]
 [ext_resource type="Texture2D" uid="uid://3k5srwuvw0s5" path="res://Assets/Sprites/1-Player-Bomb Guy/2-Run/runanimcombined.png" id="10_gchwx"]
+[ext_resource type="Texture2D" uid="uid://b1crvhluq7put" path="res://Assets/Sprites/7-Objects/13-Run Particles/1.png" id="11_6quvp"]
+[ext_resource type="Texture2D" uid="uid://ci0gdp80pr46a" path="res://Assets/Sprites/7-Objects/13-Run Particles/2.png" id="12_vypli"]
+[ext_resource type="Texture2D" uid="uid://cq58cnkuhf00a" path="res://Assets/Sprites/7-Objects/13-Run Particles/3.png" id="13_jmc0l"]
+[ext_resource type="Texture2D" uid="uid://da0ta7eqk5gdn" path="res://Assets/Sprites/7-Objects/13-Run Particles/4.png" id="14_oayqu"]
+[ext_resource type="Texture2D" uid="uid://dq58bsj2fa4f8" path="res://Assets/Sprites/7-Objects/13-Run Particles/5.png" id="15_dt41l"]
+[ext_resource type="Texture2D" uid="uid://b2pd46dfau1ux" path="res://Assets/Sprites/7-Objects/13-Run Particles/6.png" id="16_6ekwb"]
+[ext_resource type="Texture2D" uid="uid://ca7r61fgwy1rx" path="res://Assets/Sprites/7-Objects/15-Fall Particles/1.png" id="23_oix8a"]
+[ext_resource type="Texture2D" uid="uid://d2fn172iaogfj" path="res://Assets/Sprites/7-Objects/15-Fall Particles/2.png" id="24_alxrl"]
+[ext_resource type="Texture2D" uid="uid://bf81c3l1jfm26" path="res://Assets/Sprites/7-Objects/15-Fall Particles/3.png" id="25_if7it"]
+[ext_resource type="Texture2D" uid="uid://bgulst0hukvdu" path="res://Assets/Sprites/7-Objects/15-Fall Particles/4.png" id="26_4q1b2"]
+[ext_resource type="Texture2D" uid="uid://de224w63durcp" path="res://Assets/Sprites/7-Objects/15-Fall Particles/5.png" id="27_r4b1i"]
+[ext_resource type="Texture2D" uid="uid://4s0tlvgj28ii" path="res://Assets/Sprites/7-Objects/15-Fall Particles/6.png" id="28_kyxkp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmq3g"]
 atlas = ExtResource("2_43ild")
@@ -251,6 +269,9 @@ animations = [{
 }, {
 "frames": [{
 "duration": 2.0,
+"texture": ExtResource("9_tqt35")
+}, {
+"duration": 2.0,
 "texture": ExtResource("5_y3lo7")
 }, {
 "duration": 2.0,
@@ -322,6 +343,102 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6pi8"]
 size = Vector2(36, 52)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_lsa5v"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": null
+}, {
+"duration": 2.0,
+"texture": ExtResource("1_6sxcg")
+}, {
+"duration": 2.0,
+"texture": ExtResource("2_haent")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_mbhi6")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_upf0u")
+}, {
+"duration": 2.0,
+"texture": ExtResource("5_0ejfv")
+}, {
+"duration": 2.0,
+"texture": ExtResource("6_ihpav")
+}, {
+"duration": 2.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Run",
+"speed": 30.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eppio"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": null
+}, {
+"duration": 2.0,
+"texture": ExtResource("11_6quvp")
+}, {
+"duration": 2.0,
+"texture": ExtResource("12_vypli")
+}, {
+"duration": 2.0,
+"texture": ExtResource("13_jmc0l")
+}, {
+"duration": 2.0,
+"texture": ExtResource("14_oayqu")
+}, {
+"duration": 2.0,
+"texture": ExtResource("15_dt41l")
+}, {
+"duration": 2.0,
+"texture": ExtResource("16_6ekwb")
+}, {
+"duration": 2.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Run",
+"speed": 30.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u3if8"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": null
+}, {
+"duration": 2.0,
+"texture": ExtResource("23_oix8a")
+}, {
+"duration": 2.0,
+"texture": ExtResource("24_alxrl")
+}, {
+"duration": 2.0,
+"texture": ExtResource("25_if7it")
+}, {
+"duration": 2.0,
+"texture": ExtResource("26_4q1b2")
+}, {
+"duration": 2.0,
+"texture": ExtResource("27_r4b1i")
+}, {
+"duration": 2.0,
+"texture": ExtResource("28_kyxkp")
+}, {
+"duration": 2.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Run",
+"speed": 30.0
+}]
+
 [node name="PlayerSprite" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
@@ -330,14 +447,52 @@ script = ExtResource("1_ygret")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Player"]
 light_mask = 2
 z_index = 1
-position = Vector2(4, 154)
 sprite_frames = SubResource("SpriteFrames_8cgwy")
-animation = &"Run"
+animation = &"Fall"
+frame_progress = 0.0925465
 speed_scale = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 z_index = 1
-position = Vector2(8, 155)
+position = Vector2(3.725, 0)
 shape = SubResource("RectangleShape2D_x6pi8")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -100)
+limit_left = -384
+limit_top = -2432
+limit_right = 4800
+limit_bottom = 384
+position_smoothing_enabled = true
+
+[node name="JumpParticles" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(5, 10)
+sprite_frames = SubResource("SpriteFrames_lsa5v")
+animation = &"Run"
+frame = 7
+frame_progress = 1.0
+
+[node name="JumpParticles2" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(5, 10)
+sprite_frames = SubResource("SpriteFrames_lsa5v")
+animation = &"Run"
+frame = 7
+frame_progress = 1.0
+
+[node name="RunParticles" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(-20, 17)
+sprite_frames = SubResource("SpriteFrames_eppio")
+animation = &"Run"
+frame = 7
+frame_progress = 1.0
+
+[node name="FallParticles" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(0, 2.03)
+sprite_frames = SubResource("SpriteFrames_u3if8")
+animation = &"Run"
+frame = 7
+frame_progress = 1.0
