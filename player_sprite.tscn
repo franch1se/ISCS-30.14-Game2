@@ -448,8 +448,7 @@ script = ExtResource("1_ygret")
 light_mask = 2
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_8cgwy")
-animation = &"Fall"
-frame_progress = 0.0925465
+animation = &"Jump"
 speed_scale = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
