@@ -26,6 +26,13 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="2D Platformer Practice"
 
+[global_group]
+
+tilemap=""
+terrain=""
+objects=""
+door=""
+
 [input]
 
 left={

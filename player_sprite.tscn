@@ -341,7 +341,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6pi8"]
-size = Vector2(36, 52)
+size = Vector2(49, 50)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lsa5v"]
 animations = [{
@@ -453,7 +453,7 @@ speed_scale = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 z_index = 1
-position = Vector2(3.725, 0)
+position = Vector2(-2.5, 4)
 shape = SubResource("RectangleShape2D_x6pi8")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

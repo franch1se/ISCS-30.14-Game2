@@ -1,5 +1,12 @@
 extends CharacterBody2D
 
+
+@onready var background = get_tree().get_first_node_in_group("tilemap")
+@onready var terrain = get_tree().get_first_node_in_group("terrain")
+@onready var objects = get_tree().get_first_node_in_group("objects")
+@onready var door = get_tree().get_first_node_in_group("door")
+@onready var collision = $CollisionShape2D
+
 @onready var anim_sprite: AnimatedSprite2D = $Sprite2D
 @onready var run_particles: AnimatedSprite2D = $"../RunParticles"
 @onready var jump_particles: AnimatedSprite2D = $"../JumpParticles"
@@ -7,7 +14,7 @@ extends CharacterBody2D
 @onready var fall_particles: AnimatedSprite2D = $"../FallParticles"
 
 
-const SPEED = 15.0
+const SPEED = 20.0
 const JUMP_VELOCITY = -320.0
 const MAX_SPEED = 100
 const GRAVITY = Vector2(0, 800.0)
@@ -17,7 +24,11 @@ const WALL_BUMP_SPEED = 80;
 var jump_count = MX_JUMP_COUNT
 var is_jumping = false
 var is_running = false
+var is_falling = false
 var direction = 0
+var platformtype = 0
+var tiletype = 0
+var nextplatform = false
 
 var run_particles_stopping = false
 
@@ -64,6 +75,12 @@ func _physics_process(delta: float) -> void:
 		jump_count = MX_JUMP_COUNT
 		is_jumping = false
 		
+	# Check if falling (not from jump) *
+	if velocity.y > 10 and !is_jumping:
+		is_falling = true
+	else:
+		is_falling = false
+
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and jump_count>=1:
 		jump(JUMP_VELOCITY, 1)
@@ -74,6 +91,20 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("down") and is_jumping:
 		velocity.y = -JUMP_VELOCITY
 		animate_fall_particles()
+	
+	# Trampoline *
+	if platformtype == 2:
+		jump(JUMP_VELOCITY, 1.5)
+		is_jumping = true
+		platformtype = 0
+		
+	# Jumping down from one way platform *
+	if platformtype == 1 and Input.is_action_just_pressed("down") and !is_jumping:
+		collision.set_deferred('disabled', true)
+		nextplatform = false
+	elif nextplatform:
+		collision.set_deferred('disabled', false)
+
 
 	# Get the input direction and handle the movement/deceleration.
 	var prev_direction = direction
@@ -92,9 +123,8 @@ func _physics_process(delta: float) -> void:
 		animate_run_particles()
 	else:
 		stop_run_particles()
-		
-		
 	
+	check_tiletype()
 	wall_collision(delta)
 	move_and_slide()
 	
@@ -121,4 +151,23 @@ func wall_collision(delta) -> void:
 			velocity.x = -WALL_BUMP_SPEED
 		elif velocity.x < 0:
 			velocity.x = WALL_BUMP_SPEED
-			
+
+func check_tiletype():
+	var player_pos = terrain.local_to_map(global_position)
+	var floor_cell = terrain.get_neighbor_cell(player_pos, 4)
+	var next_cell = terrain.get_neighbor_cell(floor_cell, 4)
+	if objects.get_cell_tile_data(player_pos):
+		tiletype = objects.get_cell_tile_data(player_pos).get_custom_data("Type")
+		if tiletype == 3:
+			var destination = objects.get_cell_tile_data(player_pos).get_custom_data("Coords")
+			teleport(destination)
+			tiletype = 0
+	if terrain.get_cell_tile_data(floor_cell):
+		platformtype = terrain.get_cell_tile_data(floor_cell).get_custom_data("Type")
+	if terrain.get_cell_tile_data(next_cell):
+		nextplatform = true
+
+func teleport(destination):
+	var target_tile = terrain.map_to_local(destination)
+	global_position = target_tile
+	velocity *= 0
