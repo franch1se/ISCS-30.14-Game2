@@ -4,7 +4,6 @@ extends CharacterBody2D
 @onready var background = get_tree().get_first_node_in_group("tilemap")
 @onready var terrain = get_tree().get_first_node_in_group("terrain")
 @onready var objects = get_tree().get_first_node_in_group("objects")
-@onready var door = get_tree().get_first_node_in_group("door")
 @onready var collision = $CollisionShape2D
 
 @onready var anim_sprite: AnimatedSprite2D = $Sprite2D
@@ -12,19 +11,22 @@ extends CharacterBody2D
 @onready var jump_particles: AnimatedSprite2D = $"../JumpParticles"
 @onready var jump_particles2: AnimatedSprite2D = $"../JumpParticles2"
 @onready var fall_particles: AnimatedSprite2D = $"../FallParticles"
-
+@onready var door_a = get_tree().get_first_node_in_group("door_a")
+@onready var door_b = get_tree().get_first_node_in_group("door_b")
 
 const SPEED = 20.0
 const JUMP_VELOCITY = -320.0
-const MAX_SPEED = 100
+const MAX_SPEED = 125
 const GRAVITY = Vector2(0, 800.0)
 const MX_JUMP_COUNT = 2
-const WALL_BUMP_SPEED = 80;
+const WALL_BUMP_SPEED = 80
+const DOOR_A_COOR = Vector2i(4, 3)
+const DOOR_B_COOR = Vector2i(68, -22)
 
 var jump_count = MX_JUMP_COUNT
 var is_jumping = false
 var is_running = false
-var is_falling = false
+var is_teleporting = false
 var direction = 0
 var platformtype = 0
 var tiletype = 0
@@ -34,11 +36,13 @@ var run_particles_stopping = false
 
 func _ready():
 	anim_sprite.play("Idle")
+	door_a.play("Closing")
 
 func animate_change_direction():
 	anim_sprite.set_flip_h(direction == -1)
 	run_particles.set_flip_h(direction == -1)
-	anim_sprite.play("Run")
+	if not is_jumping:
+		anim_sprite.play("Run")
 
 func animate_run_particles():
 	if run_particles_stopping:
@@ -51,7 +55,8 @@ func animate_run_particles():
 
 func stop_run_particles():
 	run_particles_stopping = true
-	anim_sprite.play("Idle")
+	if not is_jumping:
+		anim_sprite.play("Idle")
 
 func animate_jump_particles():
 	if not jump_particles.is_playing():
@@ -65,7 +70,6 @@ func animate_fall_particles():
 	if not fall_particles.is_playing():
 		fall_particles.global_position = anim_sprite.global_position + Vector2(0, 20)
 		fall_particles.play("Run")
-		print("??")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -74,23 +78,25 @@ func _physics_process(delta: float) -> void:
 	else: 
 		jump_count = MX_JUMP_COUNT
 		is_jumping = false
-		
-	# Check if falling (not from jump) *
-	if velocity.y > 10 and !is_jumping:
-		is_falling = true
-	else:
-		is_falling = false
-
+	
+	if is_teleporting:
+		check_tiletype()
+		return
+	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and jump_count>=1:
 		jump(JUMP_VELOCITY, 1)
 		jump_count -= 1
 		is_jumping = true
 		animate_jump_particles()
+		anim_sprite.play("Jump")
 		
 	if Input.is_action_just_pressed("down") and is_jumping:
 		velocity.y = -JUMP_VELOCITY
 		animate_fall_particles()
+	
+	if is_jumping:
+		anim_sprite.play("Jump")
 	
 	# Trampoline *
 	if platformtype == 2:
@@ -159,8 +165,25 @@ func check_tiletype():
 	if terrain.get_cell_tile_data(player_pos):
 		tiletype = terrain.get_cell_tile_data(player_pos).get_custom_data("Type")
 		if tiletype == 3:
-			var destination = terrain.get_cell_tile_data(player_pos).get_custom_data("Coords")
-			teleport(destination)
+			if is_teleporting:
+				if not door_a.is_playing():
+					door_a.play("Closing")
+					teleport(DOOR_B_COOR)
+					await get_tree().create_timer(0.7).timeout
+					anim_sprite.play("Going_out")
+					door_b.play("Opening")
+					door_b.play("Closing")
+					print(door_b.animation)
+					is_teleporting = false
+					
+				
+			elif not is_teleporting and player_pos == DOOR_A_COOR:
+				is_teleporting = true
+				door_a.play("Opening")
+				anim_sprite.play("Going_in")
+				
+			#var destination = terrain.get_cell_tile_data(player_pos).get_custom_data("Coords")
+			#teleport(destination)
 			tiletype = 0
 	if terrain.get_cell_tile_data(floor_cell):
 		platformtype = terrain.get_cell_tile_data(floor_cell).get_custom_data("Type")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://b7ooqpir3y37a"]
+[gd_scene load_steps=59 format=4 uid="uid://b7ooqpir3y37a"]
 
 [ext_resource type="Texture2D" uid="uid://bawa1652axali" path="res://Assets/Sprites/8-Tile-Sets/Tile-Sets (64-64).png" id="1_7va5d"]
 [ext_resource type="Texture2D" uid="uid://ddkkm6b72mvx3" path="res://Assets/Sprites/8-Tile-Sets/Variations/5.png" id="2_t8bks"]
@@ -20,6 +20,15 @@
 [ext_resource type="Texture2D" uid="uid://64ytat2ffw0q" path="res://Assets/Sprites/7-Objects/12-Other Objects/Red Bottle.png" id="11_stupl"]
 [ext_resource type="Texture2D" uid="uid://dgaao22bbaiqj" path="res://Assets/Sprites/7-Objects/2-Door/2-Opening/door_opening.png" id="14_4rgko"]
 [ext_resource type="Texture2D" uid="uid://cy2yanyh5fxhm" path="res://Assets/Sprites/7-Objects/2-Door/1-Closed/1.png" id="15_j854s"]
+[ext_resource type="Texture2D" uid="uid://g4wd5a6yt01j" path="res://Assets/Sprites/7-Objects/2-Door/3-Closing/1.png" id="21_lpfxt"]
+[ext_resource type="Texture2D" uid="uid://ytbbf66a3toc" path="res://Assets/Sprites/7-Objects/2-Door/3-Closing/2.png" id="22_nf3k8"]
+[ext_resource type="Texture2D" uid="uid://bkbbrumj2b1yl" path="res://Assets/Sprites/7-Objects/2-Door/3-Closing/3.png" id="23_2wwhn"]
+[ext_resource type="Texture2D" uid="uid://bm7accgcl1hsv" path="res://Assets/Sprites/7-Objects/2-Door/3-Closing/4.png" id="24_dh3kp"]
+[ext_resource type="Texture2D" uid="uid://3mq0kjiw2502" path="res://Assets/Sprites/7-Objects/2-Door/3-Closing/5.png" id="25_6ywca"]
+[ext_resource type="Texture2D" uid="uid://5p7xj5qw62hm" path="res://Assets/Sprites/7-Objects/2-Door/2-Opening/2.png" id="26_64mae"]
+[ext_resource type="Texture2D" uid="uid://8fjx5tk5mo2j" path="res://Assets/Sprites/7-Objects/2-Door/2-Opening/3.png" id="27_gcqns"]
+[ext_resource type="Texture2D" uid="uid://kriiy8e33mys" path="res://Assets/Sprites/7-Objects/2-Door/2-Opening/4.png" id="28_tskd8"]
+[ext_resource type="Texture2D" uid="uid://c2dje21v21bd3" path="res://Assets/Sprites/7-Objects/2-Door/2-Opening/5.png" id="29_bco8o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nwfyx"]
 texture = ExtResource("1_7va5d")
@@ -795,6 +804,63 @@ texture_region_size = Vector2i(78, 96)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_e0n3j")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_umggr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_j854s")
+}],
+"loop": false,
+"name": &"Closed",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": ExtResource("21_lpfxt")
+}, {
+"duration": 3.0,
+"texture": ExtResource("22_nf3k8")
+}, {
+"duration": 3.0,
+"texture": ExtResource("23_2wwhn")
+}, {
+"duration": 3.0,
+"texture": ExtResource("24_dh3kp")
+}, {
+"duration": 3.0,
+"texture": ExtResource("25_6ywca")
+}],
+"loop": false,
+"name": &"Closing",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 3.0,
+"texture": ExtResource("26_64mae")
+}, {
+"duration": 3.0,
+"texture": ExtResource("27_gcqns")
+}, {
+"duration": 3.0,
+"texture": ExtResource("28_tskd8")
+}, {
+"duration": 3.0,
+"texture": ExtResource("29_bco8o")
+}],
+"loop": false,
+"name": &"Opening",
+"speed": 30.0
+}]
+
 [node name="MarcusMap" type="Node2D"]
 
 [node name="Background" type="TileMapLayer" parent="." groups=["tilemap"]]
@@ -816,8 +882,20 @@ position = Vector2(0, -4)
 tile_map_data = PackedByteArray("AADt/8L/DwAAAAAAAADx/8P/EAAAAAAAAAAWAA4ADwAAAAAAABD2/w8ADwAAAAAAAGD7/w8AEAAAAAAAADASAA8AEAAAAAAAADBpAOf/DwAAAAAAAGCKANP/CgAAAAAAAACRANP/CgAAAAAAAACeANP/CgAAAAAAAACoANP/CgAAAAAAAACyANP/CgAAAAAAAACeANf/CAAAAAAAAACoANf/CAAAAAAAAACYANH/CAAAAAAAAACNANH/CAAAAAAAAACNANT/CAAAAAAAAACYANT/CAAAAAAAAACVANH/CAAAAAAAAACVANT/CAAAAAAAAACVANf/CAAAAAAAAACcANH/CAAAAAAAAACcANT/CAAAAAAAAAClANH/CAAAAAAAAACiANH/CAAAAAAAAAChANH/CAAAAAAAAAChANT/CAAAAAAAAACuANH/CAAAAAAAAACuANT/CAAAAAAAAACwANH/CAAAAAAAAACwANT/CAAAAAAAAACwANf/CAAAAAAAAACrANH/CAAAAAAAAACpAJ7/CAAAAAAAAACrAJ7/CAAAAAAAAACrAKH/CAAAAAAAAACsAJL/CAAAAAAAAACsAJX/CAAAAAAAAACuAJL/CAAAAAAAAACrAIb/CAAAAAAAAACpAIb/CAAAAAAAAACpAIn/CAAAAAAAAACsAH7/CAAAAAAAAACuAH7/CAAAAAAAAACuAIH/CAAAAAAAAACaAIL/CAAAAAAAAACXAIL/CAAAAAAAAACTAIL/CAAAAAAAAACQAIL/CAAAAAAAAACTAIX/CAAAAAAAAACTAIj/CAAAAAAAAACaAIX/CAAAAAAAAAA=")
 tile_set = SubResource("TileSet_a3afb")
 
-[node name="Door" type="TileMapLayer" parent="." groups=["door"]]
+[node name="Door" type="TileMapLayer" parent="."]
 visible = false
 position = Vector2(0, -4)
 tile_map_data = PackedByteArray("AAARAA0AAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_eewav")
+
+[node name="DoorA" type="AnimatedSprite2D" parent="." groups=["door_a"]]
+position = Vector2(288.5, 218)
+scale = Vector2(0.98718, 0.854167)
+sprite_frames = SubResource("SpriteFrames_umggr")
+animation = &"Opening"
+
+[node name="DoorB" type="AnimatedSprite2D" parent="." groups=["door_b"]]
+position = Vector2(4384, -1384)
+scale = Vector2(0.98718, 0.854167)
+sprite_frames = SubResource("SpriteFrames_umggr")
+animation = &"Opening"
