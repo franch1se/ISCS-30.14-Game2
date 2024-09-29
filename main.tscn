@@ -1,12 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4ijbjo6m3lor"]
 
-
 [ext_resource type="PackedScene" uid="uid://dpeyx730l0f5c" path="res://player_sprite.tscn" id="1_vhacx"]
-
 [ext_resource type="PackedScene" uid="uid://b7ooqpir3y37a" path="res://marcus_map.tscn" id="3_crx8y"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="PlayerSprite" parent="." instance=ExtResource("1_vhacx")]
+position = Vector2(0, 130.15)
 
 [node name="MarcusMap" parent="." instance=ExtResource("3_crx8y")]
