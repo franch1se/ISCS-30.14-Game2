@@ -156,10 +156,10 @@ func check_tiletype():
 	var player_pos = terrain.local_to_map(global_position)
 	var floor_cell = terrain.get_neighbor_cell(player_pos, 4)
 	var next_cell = terrain.get_neighbor_cell(floor_cell, 4)
-	if objects.get_cell_tile_data(player_pos):
-		tiletype = objects.get_cell_tile_data(player_pos).get_custom_data("Type")
+	if terrain.get_cell_tile_data(player_pos):
+		tiletype = terrain.get_cell_tile_data(player_pos).get_custom_data("Type")
 		if tiletype == 3:
-			var destination = objects.get_cell_tile_data(player_pos).get_custom_data("Coords")
+			var destination = terrain.get_cell_tile_data(player_pos).get_custom_data("Coords")
 			teleport(destination)
 			tiletype = 0
 	if terrain.get_cell_tile_data(floor_cell):
