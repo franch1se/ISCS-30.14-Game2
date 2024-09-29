@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=51 format=3 uid="uid://dpeyx730l0f5c"]
+[gd_scene load_steps=50 format=3 uid="uid://dpeyx730l0f5c"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ygret"]
 [ext_resource type="Texture2D" uid="uid://dye37jyucl5sb" path="res://Assets/Sprites/1-Player-Bomb Guy/1-Idle/idleanimcombined.png" id="2_43ild"]
@@ -119,10 +118,6 @@ region = Rect2(58, 0, 58, 58)
 [sub_resource type="AtlasTexture" id="AtlasTexture_n33v0"]
 atlas = ExtResource("10_gchwx")
 region = Rect2(116, 0, 58, 58)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gprr6"]
-atlas = ExtResource("10_gchwx")
-region = Rect2(174, 0, 58, 58)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hrlah"]
 atlas = ExtResource("10_gchwx")
@@ -280,46 +275,43 @@ animations = [{
 "speed": 30.0
 }, {
 "frames": [{
-"duration": 2.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_5pqao")
 }, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7r2xr")
 }, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_n33v0")
 }, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_gprr6")
-}, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_hrlah")
 }, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_eiiex")
 }, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_3g4cs")
 }, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_gjpc2")
 }, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_38ndg")
 }, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_jixmg")
 }, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_pjnw4")
 }, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_6jv8d")
 }, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_6nsx8")
 }, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2abyd")
 }],
 "loop": true,
@@ -340,10 +332,8 @@ light_mask = 2
 z_index = 1
 position = Vector2(4, 154)
 sprite_frames = SubResource("SpriteFrames_8cgwy")
-animation = &"Fall"
-frame_progress = 0.0925465
+animation = &"Run"
 speed_scale = 0.5
-
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 z_index = 1
