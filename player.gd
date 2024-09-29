@@ -14,6 +14,9 @@ extends CharacterBody2D
 @onready var door_a = get_tree().get_first_node_in_group("door_a")
 @onready var door_b = get_tree().get_first_node_in_group("door_b")
 
+@export var bombPath : PackedScene = load("res://bomb.tscn")
+@onready var bombGroup = $"../BombGroup"
+
 const SPEED = 20.0
 const JUMP_VELOCITY = -320.0
 const MAX_SPEED = 125
@@ -83,6 +86,13 @@ func _physics_process(delta: float) -> void:
 		check_tiletype()
 		return
 	
+	# Bomb
+	#if Input.is_action_just_pressed("interact"):
+		##print("BOMB")
+		#var newBomb = bombPath.instantiate()
+		#bombGroup.add_child(newBomb)
+		#newBomb.global_position = anim_sprite.global_position
+		
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and jump_count>=1:
 		jump(JUMP_VELOCITY, 1)
@@ -173,7 +183,6 @@ func check_tiletype():
 					anim_sprite.play("Going_out")
 					door_b.play("Opening")
 					door_b.play("Closing")
-					print(door_b.animation)
 					is_teleporting = false
 					
 				
