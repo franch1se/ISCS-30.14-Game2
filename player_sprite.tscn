@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=51 format=3 uid="uid://dpeyx730l0f5c"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ygret"]
@@ -342,6 +343,7 @@ sprite_frames = SubResource("SpriteFrames_8cgwy")
 animation = &"Fall"
 frame_progress = 0.0925465
 speed_scale = 0.5
+
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 z_index = 1
