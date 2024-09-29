@@ -1,27 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4ijbjo6m3lor"]
+[gd_scene load_steps=3 format=3 uid="uid://c4ijbjo6m3lor"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_cg0v6"]
-[ext_resource type="Texture2D" uid="uid://darqtaxk53x0v" path="res://Assets/Sprites/1-Player-Bomb Guy/1-Idle/1.png" id="2_dg7pm"]
+[ext_resource type="PackedScene" uid="uid://hqmlxtup87rf" path="res://player_sprite.tscn" id="1_vhacx"]
 [ext_resource type="PackedScene" uid="uid://b7ooqpir3y37a" path="res://marcus_map.tscn" id="3_crx8y"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2a0t8"]
-size = Vector2(36, 52)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("1_cg0v6")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-z_index = 1
-position = Vector2(4, 154)
-texture = ExtResource("2_dg7pm")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-z_index = 1
-position = Vector2(8, 155)
-shape = SubResource("RectangleShape2D_2a0t8")
+[node name="PlayerSprite" parent="." instance=ExtResource("1_vhacx")]
 
 [node name="MarcusMap" parent="." instance=ExtResource("3_crx8y")]
