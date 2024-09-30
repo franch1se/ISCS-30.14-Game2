@@ -14,9 +14,6 @@ extends CharacterBody2D
 @onready var door_a = get_tree().get_first_node_in_group("door_a")
 @onready var door_b = get_tree().get_first_node_in_group("door_b")
 
-@export var bombPath : PackedScene = load("res://bomb.tscn")
-@onready var bombGroup = $"../BombGroup"
-
 const SPEED = 20.0
 const JUMP_VELOCITY = -320.0
 const MAX_SPEED = 125
@@ -34,6 +31,7 @@ var direction = 0
 var platformtype = 0
 var tiletype = 0
 var nextplatform = false
+var is_exploding = false
 
 var run_particles_stopping = false
 
@@ -85,13 +83,6 @@ func _physics_process(delta: float) -> void:
 	if is_teleporting:
 		check_tiletype()
 		return
-	
-	# Bomb
-	#if Input.is_action_just_pressed("interact"):
-		##print("BOMB")
-		#var newBomb = bombPath.instantiate()
-		#bombGroup.add_child(newBomb)
-		#newBomb.global_position = anim_sprite.global_position
 		
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and jump_count>=1:
@@ -125,7 +116,8 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	var prev_direction = direction
 	direction = Input.get_axis("left", "right")
-	if direction:
+		
+	if direction and not is_exploding:
 		accelerate(direction)
 		is_running = true
 	else:

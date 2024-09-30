@@ -1,6 +1,7 @@
-[gd_scene load_steps=103 format=3 uid="uid://dpeyx730l0f5c"]
+[gd_scene load_steps=104 format=3 uid="uid://dpeyx730l0f5c"]
 
 [ext_resource type="Texture2D" uid="uid://bo6x235ji6cef" path="res://Assets/Sprites/7-Objects/14-Jump Particles/1.png" id="1_6sxcg"]
+[ext_resource type="Script" path="res://bomb_group.gd" id="1_lbc7e"]
 [ext_resource type="Script" path="res://player.gd" id="1_ygret"]
 [ext_resource type="Texture2D" uid="uid://dye37jyucl5sb" path="res://Assets/Sprites/1-Player-Bomb Guy/1-Idle/idleanimcombined.png" id="2_43ild"]
 [ext_resource type="Texture2D" uid="uid://5tr060sae68q" path="res://Assets/Sprites/7-Objects/14-Jump Particles/2.png" id="2_haent"]
@@ -580,11 +581,13 @@ animations = [{
 [node name="PlayerSprite" type="Node2D"]
 
 [node name="BombGroup" type="Node2D" parent="."]
+script = ExtResource("1_lbc7e")
 
 [node name="Player" type="CharacterBody2D" parent="."]
+collision_layer = 2
 script = ExtResource("1_ygret")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="Player"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Player" groups=["player"]]
 light_mask = 2
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_8cgwy")
